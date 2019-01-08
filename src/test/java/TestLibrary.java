@@ -10,8 +10,13 @@ public class TestLibrary {
 
 	@Before
 	public void setUp() {
-		library = new Library();
+		library = new Library(50);
 		pride = new Book("Pride and Prejudice", "Jane Austen", "Romance");
+	}
+
+	@Test
+	public void hasCapacity() {
+		assertEquals(50,library.getCapacity());
 	}
 
 	@Test
@@ -23,5 +28,14 @@ public class TestLibrary {
 	public void canAddBook() {
 		library.addNewBook(pride);
 		assertEquals(1, library.getStockLevels());
+	}
+
+	@Test
+	public void cannotAddOverCapacity() {
+		for (int i=0; i<library.getCapacity(); i++) {
+			library.addNewBook(pride);
+		}
+		library.addNewBook(pride);
+		assertEquals(50, library.getStockLevels());
 	}
 }
