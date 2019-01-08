@@ -11,7 +11,6 @@ public class Borrower {
 		loanedBooks = new ArrayList<Book>();
 	}
 
-
 	public String getName() {
 		return name;
 	}
@@ -20,4 +19,7 @@ public class Borrower {
 		return loanedBooks;
 	}
 
+	public void addBook(Book book) {
+		loanedBooks.add(book);
+	}
 }
